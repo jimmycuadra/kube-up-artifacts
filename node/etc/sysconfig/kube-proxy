@@ -1,0 +1,1 @@
+DAEMON_ARGS="$DAEMON_ARGS --master=https://172.20.0.9 --kubeconfig=/var/lib/kube-proxy/kubeconfig --v=2"

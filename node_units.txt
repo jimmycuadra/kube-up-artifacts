@@ -1,0 +1,3 @@
+ubuntu@ip-172-20-0-33:~$ systemctl list-units | grep kub
+kube-proxy.service        loaded active running   Kubernetes Kube-Proxy Server
+kubelet.service           loaded active running   Kubernetes Kubelet Server

@@ -1,0 +1,1 @@
+DAEMON_ARGS="$DAEMON_ARGS  --enable-debugging-handlers=false  --cloud_provider=aws --config=/etc/kubernetes/manifests  --allow_privileged=False --v=2 --cluster_dns=10.0.0.10 --cluster_domain=cluster.local   --configure-cbr0=true --cgroup_root=docker --system-container=/system --pod-cidr=10.246.0.0/24"

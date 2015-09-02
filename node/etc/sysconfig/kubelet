@@ -1,0 +1,1 @@
+DAEMON_ARGS="$DAEMON_ARGS --api_servers=https://172.20.0.9 --enable-debugging-handlers=true  --hostname_override=ip-172-20-0-33.us-west-2.compute.internal --cloud_provider=aws --config=/etc/kubernetes/manifests  --allow_privileged=False --v=2 --cluster_dns=10.0.0.10 --cluster_domain=cluster.local   --configure-cbr0=true --cgroup_root=docker --system-container=/system "

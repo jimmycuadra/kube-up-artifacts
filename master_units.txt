@@ -1,0 +1,3 @@
+ubuntu@ip-172-20-0-9:~$ systemctl list-units | grep kub
+kube-addons.service       loaded active running   Kubernetes Addon Object Manager
+kubelet.service           loaded active running   Kubernetes Kubelet Server

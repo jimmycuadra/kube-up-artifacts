@@ -1,0 +1,149 @@
+$ KUBERNETES_PROVIDER=aws NUM_MINIONS=2 ./cluster/kube-up.sh
+Starting cluster using provider: aws
+... calling verify-prereqs
+... calling kube-up
+Starting cluster using os distro: vivid
+Uploading to Amazon S3
+Creating kubernetes-staging-3b08abe17f0ff1df6bbd260e3d00e0df
+make_bucket: s3://kubernetes-staging-3b08abe17f0ff1df6bbd260e3d00e0df/
++++ Staging server tars to S3 Storage: kubernetes-staging-3b08abe17f0ff1df6bbd260e3d00e0df/devel
+upload: ../../../../var/folders/wr/65ck1kzd2jj4ldmn9x3sqsvw0000gn/T/kubernetes.XXXXXX.tV1KkaMD/s3/kubernetes-salt.tar.gz to s3://kubernetes-staging-3b08abe17f0ff1df6bbd260e3d00e0df/devel/kubernetes-salt.tar.gz
+upload: ../../../../var/folders/wr/65ck1kzd2jj4ldmn9x3sqsvw0000gn/T/kubernetes.XXXXXX.tV1KkaMD/s3/kubernetes-server-linux-amd64.tar.gz to s3://kubernetes-staging-3b08abe17f0ff1df6bbd260e3d00e0df/devel/kubernetes-server-linux-amd64.tar.gz
+
+A client error (NoSuchEntity) occurred when calling the GetInstanceProfile operation: Instance Profile kubernetes-master cannot be found.
+Creating master IAM profile: kubernetes-master
+Creating IAM role: kubernetes-master
+Creating IAM role-policy: kubernetes-master
+Creating IAM instance-policy: kubernetes-master
+Adding IAM role to instance-policy: kubernetes-master
+
+A client error (NoSuchEntity) occurred when calling the GetInstanceProfile operation: Instance Profile kubernetes-minion cannot be found.
+Creating minion IAM profile: kubernetes-minion
+Creating IAM role: kubernetes-minion
+Creating IAM role-policy: kubernetes-minion
+Creating IAM instance-policy: kubernetes-minion
+Adding IAM role to instance-policy: kubernetes-minion
+Generating public/private rsa key pair.
+Your identification has been saved in /Users/redacted/.ssh/kube_aws_rsa.
+Your public key has been saved in /Users/redacted/.ssh/kube_aws_rsa.pub.
+The key fingerprint is:
+56:bd:42:0a:a1:ee:e7:ca:e2:e2:29:9b:4a:7a:c8:23 redacted@Sly.local
+The key's randomart image is:
++--[ RSA 2048]----+
+|      .          |
+|     . .   .     |
+|    . .   o .    |
+|   .   . +   .   |
+|    .   S . .    |
+|   .   .   .     |
+|.o  . .          |
+|E++. o           |
+|XBo.o..          |
++-----------------+
+Using SSH key with (AWS) fingerprint: 56:bd:42:0a:a1:ee:e7:ca:e2:e2:29:9b:4a:7a:c8:23
+Creating vpc.
+Adding tag to vpc-44e09d21: Name=kubernetes-vpc
+Adding tag to vpc-44e09d21: KubernetesCluster=kubernetes
+Using VPC vpc-44e09d21
+Creating subnet.
+Adding tag to subnet-c5a3efa0: KubernetesCluster=kubernetes
+Using subnet subnet-c5a3efa0
+Creating Internet Gateway.
+Using Internet Gateway igw-e735b482
+Associating route table.
+Creating route table
+Adding tag to rtb-bbc085de: KubernetesCluster=kubernetes
+Associating route table rtb-bbc085de to subnet subnet-c5a3efa0
+Adding route to route table rtb-bbc085de
+Using Route Table rtb-bbc085de
+Creating master security group.
+Creating security group kubernetes-master-kubernetes.
+Adding tag to sg-4e78c52a: KubernetesCluster=kubernetes
+Creating minion security group.
+Creating security group kubernetes-minion-kubernetes.
+Adding tag to sg-4a78c52e: KubernetesCluster=kubernetes
+Using master security group: kubernetes-master-kubernetes sg-4e78c52a
+Using minion security group: kubernetes-minion-kubernetes sg-4a78c52e
+Creating master disk: size 20GB, type gp2
+Adding tag to vol-cde12139: Name=kubernetes-master-pd
+Adding tag to vol-cde12139: KubernetesCluster=kubernetes
+Starting Master
+Adding tag to i-c67b0503: Name=kubernetes-master
+Adding tag to i-c67b0503: Role=kubernetes-master
+Adding tag to i-c67b0503: KubernetesCluster=kubernetes
+Waiting for master to be ready
+Attempt 1 to check for master node [master not working yet]
+Attempt 2 to check for master node [master not working yet]
+Attempt 3 to check for master node [master not working yet]
+Attempt 4 to check for master node [master running @52.26.176.142]
+Attaching peristent data volume (vol-cde12139) to master
+{
+    "AttachTime": "2015-09-01T03:41:58.309Z",
+    "InstanceId": "i-c67b0503",
+    "VolumeId": "vol-cde12139",
+    "State": "attaching",
+    "Device": "/dev/sdb"
+}
+Attempt 1 to check for SSH to master [ssh to master working]
+Attempt 1 to check for salt-master [salt-master not working yet]
+Attempt 2 to check for salt-master [salt-master not working yet]
+Attempt 3 to check for salt-master [salt-master not working yet]
+Attempt 4 to check for salt-master [salt-master not working yet]
+Attempt 5 to check for salt-master [salt-master not working yet]
+Attempt 6 to check for salt-master [salt-master not working yet]
+Attempt 7 to check for salt-master [salt-master not working yet]
+Attempt 8 to check for salt-master [salt-master not working yet]
+Attempt 9 to check for salt-master [salt-master not working yet]
+Attempt 10 to check for salt-master [salt-master running]
+Creating minion configuration
+Creating autoscaling group
+ 0 minions started; waiting
+ 0 minions started; waiting
+ 0 minions started; waiting
+ 0 minions started; waiting
+ 0 minions started; waiting
+ 0 minions started; waiting
+ 0 minions started; waiting
+ 2 minions started; ready
+Waiting 3 minutes for cluster to settle
+..................Re-running salt highstate
+Waiting for cluster initialization.
+
+  This will continually check to see if the API for kubernetes is reachable.
+  This might loop forever if there was some uncaught error during start
+  up.
+
+Kubernetes cluster created.
+Wrote config for aws_kubernetes to /Users/redacted/.kube/config
+Sanity checking cluster...
+Attempt 1 to check Docker on node @ 52.88.28.37 ...working
+Attempt 1 to check Docker on node @ 52.88.31.95 ...working
+
+Kubernetes cluster is running.  The master is running at:
+
+  https://52.26.176.142
+
+The user name and password to use is located in /Users/redacted/.kube/config.
+
+... calling validate-cluster
+Found 2 nodes.
+        NAME                                         LABELS                                                              STATUS
+     1	ip-172-20-0-162.us-west-2.compute.internal   kubernetes.io/hostname=ip-172-20-0-162.us-west-2.compute.internal   Ready
+     2	ip-172-20-0-163.us-west-2.compute.internal   kubernetes.io/hostname=ip-172-20-0-163.us-west-2.compute.internal   Ready
+Validate output:
+NAME                 STATUS    MESSAGE              ERROR
+etcd-0               Healthy   {"health": "true"}   nil
+controller-manager   Healthy   ok                   nil
+scheduler            Healthy   ok                   nil
+Cluster validation succeeded
+Done, listing cluster services:
+
+Kubernetes master is running at https://52.26.176.142
+Elasticsearch is running at https://52.26.176.142/api/v1/proxy/namespaces/kube-system/services/elasticsearch-logging
+Kibana is running at https://52.26.176.142/api/v1/proxy/namespaces/kube-system/services/kibana-logging
+KubeDNS is running at https://52.26.176.142/api/v1/proxy/namespaces/kube-system/services/kube-dns
+KubeUI is running at https://52.26.176.142/api/v1/proxy/namespaces/kube-system/services/kube-ui
+Grafana is running at https://52.26.176.142/api/v1/proxy/namespaces/kube-system/services/monitoring-grafana
+Heapster is running at https://52.26.176.142/api/v1/proxy/namespaces/kube-system/services/monitoring-heapster
+InfluxDB is running at https://52.26.176.142/api/v1/proxy/namespaces/kube-system/services/monitoring-influxdb
+
