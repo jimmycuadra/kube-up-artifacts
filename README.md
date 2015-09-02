@@ -6,7 +6,7 @@
 
 * kube-up.out: The shell output of running the official kube-up.sh script.
 * local_kubeconfig.yml: The kubeconfig file placed on your local system at ~/.kube/config, used by `kubectl` to control the cluster remotely.
-* master: The files placed on the filesystem of the Kubernetes master server. Note that /mnt/master-pd/srv/kubernetes is linked at /srv/kubernetes and referred to with that path in the various configuration files.
+* master: The files placed on the filesystem of the Kubernetes master server. Note that /mnt/master-pd is an extra attached EBS volume. /mnt/master-pd/srv/kubernetes is linked at /srv/kubernetes and referred to with that path in the various configuration files.
 * master_units.txt: The systemd units Kubernetes runs on the master server.
 * node: The files placed on the filesystem of all the Kubernetes node servers.
 * node_units.txt: The systemd units Kubernetes runs on all the node servers.
